@@ -1,0 +1,60 @@
+---
+title: "R Markdown and Leaflet Project"
+author: "MJL"
+date: "February 19, 2018"
+output: ioslides_presentation
+---
+
+## Things to See and Do While in Minnesota
+### February 19, 2018
+
+### X Marks the Spot!!
+
+```{r setup, echo=FALSE}
+library(leaflet)
+MNLatLong <- data.frame(
+        lat = c(44.944831,44.981766,44.973648, 44.979455,44.884755, 44.854865, 44.908630, 44.945124,44.955093,44.921962,44.907342,44.955150),
+        lng = c(-93.101097,-93.277514 ,-93.257511, -93.27619, -93.222285, -93.242215,-93.242021,-93.311179,-93.309643,-93.306161,-93.634447,-93.102233)
+)
+X <- makeIcon(
+        iconUrl = "https://upload.wikimedia.org/wikipedia/en/2/26/Disctemp-x.png",
+        iconWidth = 31*215/230, iconHeight = 31,
+        iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+MNSites <- c(
+        "<a href='https://www.xcelenergycenter.com/'> Xcel Center - MN Wild </a",
+        "<a href='https://www.mlb.com/twins/ballpark'> Target Field - MN Twins </a",
+        "<a href='https://www.usbankstadium.com/'> US Bank Stadium - MN Vikings </a",
+        "<a href='https://www.targetcenter.com/'> Target Center - MN Timberwolves </a",
+        "<a href='https://www.mspairport.com/'> MSP Airport </a",
+        "<a href='https://www.mallofamerica.com/home'> Mall of America </a",
+        "<a href='https://www.minneapolisparks.org/parks__destinations/parks__lakes/lake_nokomis_park/'> Lake Nokomis </a",
+        "<a href='https://www.minneapolisparks.org/parks__destinations/parks__lakes/bde_maka_ska_park/'> Bde Maka Ska </a",
+        "<a href='https://www.minneapolisparks.org/parks__destinations/parks__lakes/lake_of_the_isles_park/'> Lake of the Isles </a",
+        "<a href='https://www.minneapolisparks.org/parks__destinations/parks__lakes/lake_harriet_park/'> Lake Harriet </a" ,
+        "<a href='https://www.threeriversparks.org/location/lake-minnetonka-regional-park'> Lake Minnetonka </a",
+        "<a href='https://www.mnhs.org/capitol'> State Capital Building </a"
+)
+
+MNLatLong %>%
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers(icon = X, popup=MNSites)
+
+
+```
+
+## Sites - *X Marks the Spot*
+
+- Xcel Energy           
+- Target Field
+- US Bank               
+- Target Center
+- MSP Airport          
+- Mall of America
+- Lake Nokomis         
+- Bde Maka Ska
+- Lake of the Isles     
+- Lake Harriet
+- State Capital Building
